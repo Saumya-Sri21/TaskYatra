@@ -37,16 +37,14 @@ const ManageUsers = () => {
     fetchUsers();
   }, [navigate]);
 
-  const filteredUsers = users.filter(user => 
+  const filteredUsers = users.filter(user =>
     user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     user.email.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const handleDeleteUser = async () => {
     if (!selectedUser) return;
-    
-    // Note: This would require a delete user endpoint in the backend
-    // For now, we'll just show a message
+
     alert('Delete user functionality would be implemented here');
     setShowDeleteModal(false);
     setSelectedUser(null);
@@ -73,14 +71,14 @@ const ManageUsers = () => {
             <div className="flex items-center space-x-4">
               <button
                 onClick={() => navigate('/admin/dashboard')}
-                className="text-white hover:text-opacity-80"
+                className="text-purple-600 hover:text-opacity-80"
               >
                 ← Back
               </button>
-              <h1 className="text-2xl font-bold text-white">Manage Users</h1>
+              <h1 className="text-2xl font-bold text-purple-600">Manage Users</h1>
             </div>
-            <div className="text-white">
-              {filteredUsers.length} users
+            <div className="text-purple-600">
+              {filteredUsers.length} Users
             </div>
           </div>
         </div>
@@ -90,13 +88,13 @@ const ManageUsers = () => {
       <div className="container mx-auto px-4 py-6">
         <div className="bg-white bg-opacity-10 backdrop-blur-md rounded-2xl p-6 border border-white border-opacity-20 mb-6">
           <div>
-            <label className="block text-white text-sm font-medium mb-2">Search Users</label>
+            <label className="block text-purple-600 text-sm font-medium mb-2">Search Users</label>
             <input
               type="text"
               placeholder="Search by name or email..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full px-4 py-2 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 focus:outline-none focus:ring-2 focus:ring-violet-400 text-white placeholder-white placeholder-opacity-70"
+              className="w-full px-4 py-2 rounded-lg bg-white bg-opacity-20 border border-purple-300 border-opacity-30 focus:outline-none focus:ring-2 focus:ring-violet-400 text-gray-500 placeholder-white placeholder-opacity-70"
             />
           </div>
         </div>
@@ -106,23 +104,23 @@ const ManageUsers = () => {
           {filteredUsers.map((user) => (
             <div
               key={user._id}
-              className="bg-white bg-opacity-10 backdrop-blur-md rounded-2xl p-6 border border-white border-opacity-20 hover:bg-opacity-15 transition duration-200"
+              className="bg-white bg-opacity-10 backdrop-blur-md rounded-2xl p-6 border border-purple-300 border-opacity-20 hover:bg-opacity-15 transition duration-200"
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-4">
                   <div className="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
-                    <span className="text-white font-semibold text-lg">
+                    <span className="w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-br from-purple-500 to-pink-400 text-white font-semibold text-lg">
                       {user.name?.charAt(0).toUpperCase()}
                     </span>
                   </div>
                   <div>
-                    <h3 className="text-white font-semibold text-lg">{user.name}</h3>
-                    <p className="text-white text-opacity-70">{user.email}</p>
+                    <h3 className="text-gray-950 font-semibold text-lg">{user.name}</h3>
+                    <p className="text-gray-950 text-opacity-70">{user.email}</p>
                     <div className="flex items-center space-x-2 mt-1">
                       <span className={`px-2 py-1 rounded-full text-xs font-medium ${getRoleColor(user.role)} bg-white bg-opacity-10`}>
                         {user.role}
                       </span>
-                      <span className="text-white text-opacity-60 text-xs">
+                      <span className="text-gray-800 text-opacity-60 text-xs">
                         Joined: {new Date(user.createdAt).toLocaleDateString()}
                       </span>
                     </div>
@@ -132,7 +130,7 @@ const ManageUsers = () => {
                 <div className="flex items-center space-x-2">
                   <button
                     onClick={() => navigate(`/admin/users/edit/${user._id}`)}
-                    className="px-3 py-1 bg-white bg-opacity-20 text-white rounded-lg hover:bg-opacity-30 transition duration-200 text-sm"
+                    className="px-3 py-1 bg-green-500 bg-opacity-20 text-white rounded-lg hover:bg-opacity-30 transition duration-200 text-sm"
                   >
                     Edit
                   </button>
@@ -157,8 +155,8 @@ const ManageUsers = () => {
               {searchTerm ? 'No users found' : 'No users registered yet'}
             </div>
             <p className="text-white text-opacity-40">
-              {searchTerm 
-                ? 'Try adjusting your search criteria' 
+              {searchTerm
+                ? 'Try adjusting your search criteria'
                 : 'Users will appear here once they register'
               }
             </p>
@@ -166,22 +164,22 @@ const ManageUsers = () => {
         )}
 
         {/* User Statistics */}
-        <div className="mt-8 bg-white bg-opacity-10 backdrop-blur-md rounded-2xl p-6 border border-white border-opacity-20">
-          <h3 className="text-xl font-bold text-white mb-4">User Statistics</h3>
+        <div className="mt-8 bg-white bg-opacity-10 backdrop-blur-md rounded-2xl p-6 border border-purple-300 border-opacity-20">
+          <h3 className="text-xl font-bold text-purple-600 mb-4">User Statistics</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="text-center">
-              <p className="text-white text-opacity-60 text-sm">Total Users</p>
-              <p className="text-white text-3xl font-bold">{users.length}</p>
+              <p className="text-purple-600 text-opacity-60 text-sm">Total Users</p>
+              <p className="text-purple-600 text-3xl font-bold">{users.length}</p>
             </div>
             <div className="text-center">
-              <p className="text-white text-opacity-60 text-sm">Admins</p>
-              <p className="text-white text-3xl font-bold">
+              <p className="text-purple-600 text-opacity-60 text-sm">Admins</p>
+              <p className="text-purple-600 text-3xl font-bold">
                 {users.filter(user => user.role === 'admin').length}
               </p>
             </div>
             <div className="text-center">
-              <p className="text-white text-opacity-60 text-sm">Regular Users</p>
-              <p className="text-white text-3xl font-bold">
+              <p className="text-purple-600 text-opacity-60 text-sm">Regular Users</p>
+              <p className="text-purple-600 text-3xl font-bold">
                 {users.filter(user => user.role === 'user').length}
               </p>
             </div>
@@ -191,10 +189,10 @@ const ManageUsers = () => {
 
       {/* Delete Modal */}
       {showDeleteModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div className="fixed inset-0 bg-black/90 flex items-center justify-center z-50">
           <div className="bg-white bg-opacity-10 backdrop-blur-md rounded-2xl p-6 border border-white border-opacity-20 max-w-md w-full mx-4">
-            <h3 className="text-xl font-bold text-white mb-4">Delete User</h3>
-            <p className="text-white text-opacity-80 mb-6">
+            <h3 className="text-xl font-bold text-purple-800 mb-4">Delete User</h3>
+            <p className="text-black text-opacity-80 mb-6">
               Are you sure you want to delete "{selectedUser?.name}"? This action cannot be undone.
             </p>
             <div className="flex space-x-4">
@@ -209,7 +207,7 @@ const ManageUsers = () => {
                   setShowDeleteModal(false);
                   setSelectedUser(null);
                 }}
-                className="flex-1 py-2 bg-white bg-opacity-20 text-white rounded-lg hover:bg-opacity-30 transition duration-200"
+                className="flex-1 py-2 bg-green-500 bg-opacity-20 text-white rounded-lg hover:bg-opacity-30 transition duration-200"
               >
                 Cancel
               </button>
@@ -222,21 +220,21 @@ const ManageUsers = () => {
       <div className="fixed bottom-0 left-0 right-0 bg-white bg-opacity-10 backdrop-blur-md border-t border-white border-opacity-20">
         <div className="container mx-auto px-4 py-4">
           <div className="flex justify-around items-center">
-            <button 
+            <button
               onClick={() => navigate('/admin/dashboard')}
-              className="flex flex-col items-center text-white"
+              className="flex flex-col items-center text-purple-600"
             >
               <span className="text-2xl mb-1">🏠</span>
               <span className="text-xs">Dashboard</span>
             </button>
-            <button 
+            <button
               onClick={() => navigate('/admin/tasks')}
-              className="flex flex-col items-center text-white"
+              className="flex flex-col items-center text-purple-600"
             >
               <span className="text-2xl mb-1">📋</span>
               <span className="text-xs">Tasks</span>
             </button>
-            <button className="flex flex-col items-center text-white">
+            <button className="flex flex-col items-center text-purple-600">
               <span className="text-2xl mb-1">👥</span>
               <span className="text-xs">Users</span>
             </button>

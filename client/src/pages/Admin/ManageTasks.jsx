@@ -100,11 +100,11 @@ const ManageTasks = () => {
             <div className="flex items-center space-x-4">
               <button
                 onClick={() => navigate('/admin/dashboard')}
-                className="text-white hover:text-opacity-80"
+                className="text-purple-600 hover:text-opacity-80"
               >
                 ← Back
               </button>
-              <h1 className="text-2xl font-bold text-white">Manage Tasks</h1>
+              <h1 className="text-2xl font-bold text-purple-600">Manage Tasks</h1>
             </div>
             <button
               onClick={() => navigate('/admin/create-task')}
@@ -122,23 +122,23 @@ const ManageTasks = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Search */}
             <div>
-              <label className="block text-white text-sm font-medium mb-2">Search Tasks</label>
+              <label className="block text-purple-600 text-sm font-medium mb-2">Search Tasks</label>
               <input
                 type="text"
                 placeholder="Search by title or description..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full px-4 py-2 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 focus:outline-none focus:ring-2 focus:ring-violet-400 text-white placeholder-white placeholder-opacity-70"
+                className="w-full px-4 py-2 rounded-lg bg-white bg-opacity-20 border border-purple-300 border-opacity-30 focus:outline-none focus:ring-2 focus:ring-violet-400 text-purple-600 placeholder-white placeholder-opacity-70"
               />
             </div>
 
             {/* Filter */}
             <div>
-              <label className="block text-white text-sm font-medium mb-2">Filter by Status</label>
+              <label className="block text-purple-600 text-sm font-medium mb-2">Filter by Status</label>
               <select
                 value={filter}
                 onChange={(e) => setFilter(e.target.value)}
-                className="w-full px-4 py-2 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 focus:outline-none focus:ring-2 focus:ring-violet-400 text-white"
+                className="w-full px-4 py-2 rounded-lg bg-white bg-opacity-20 border border-purple-300 border-opacity-30 focus:outline-none focus:ring-2 focus:ring-violet-400 text-purple-600"
               >
                 <option value="all">All Tasks</option>
                 <option value="pending">Pending</option>
@@ -159,14 +159,14 @@ const ManageTasks = () => {
               <div className="flex items-start justify-between">
                 <div className="flex-1">
                   <div className="flex items-center space-x-3 mb-2">
-                    <h3 className="text-white font-semibold text-lg">{task.title}</h3>
-                    <span className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(task.status)} text-white`}>
+                    <h3 className="text-purple-600 font-semibold text-lg">{task.title}</h3>
+                    <span className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(task.status)} text-purple-600`}>
                       {task.status}
                     </span>
                   </div>
                   
                   {task.description && (
-                    <p className="text-white text-opacity-70 mb-3">
+                    <p className="text-purple-600 text-opacity-70 mb-3">
                       {task.description.length > 100 
                         ? `${task.description.substring(0, 100)}...` 
                         : task.description
@@ -176,23 +176,23 @@ const ManageTasks = () => {
 
                   <div className="flex items-center space-x-4 text-sm">
                     <div className="flex items-center space-x-2">
-                      <span className="text-white text-opacity-60">Priority:</span>
+                      <span className="text-black text-opacity-60">Priority:</span>
                       <span className={`font-medium ${getPriorityColor(task.priority)}`}>
                         {task.priority}
                       </span>
                     </div>
                     
                     <div className="flex items-center space-x-2">
-                      <span className="text-white text-opacity-60">Due:</span>
-                      <span className="text-white">
+                      <span className="text-gray-900 text-opacity-60">Due:</span>
+                      <span className="text-gray-900">
                         {new Date(task.dueDate).toLocaleDateString()}
                       </span>
                     </div>
 
                     {task.assignedTo && task.assignedTo.length > 0 && (
                       <div className="flex items-center space-x-2">
-                        <span className="text-white text-opacity-60">Assigned:</span>
-                        <span className="text-white">
+                        <span className="text-gray-900 text-opacity-60">Assigned:</span>
+                        <span className="text-gray-900">
                           {task.assignedTo.length} user{task.assignedTo.length !== 1 ? 's' : ''}
                         </span>
                       </div>
@@ -200,8 +200,8 @@ const ManageTasks = () => {
 
                     {task.todoList && task.todoList.length > 0 && (
                       <div className="flex items-center space-x-2">
-                        <span className="text-white text-opacity-60">Checklist:</span>
-                        <span className="text-white">
+                        <span className="text-purple-600 text-opacity-60">Checklist:</span>
+                        <span className="text-purple-600">
                           {task.todoList.filter(item => item.completed).length}/{task.todoList.length}
                         </span>
                       </div>
@@ -212,7 +212,7 @@ const ManageTasks = () => {
                 <div className="flex items-center space-x-2">
                   <button
                     onClick={() => navigate(`/admin/tasks/edit/${task._id}`)}
-                    className="px-3 py-1 bg-white bg-opacity-20 text-white rounded-lg hover:bg-opacity-30 transition duration-200 text-sm"
+                    className="px-3 py-1 bg-green-500 bg-opacity-20 text-white rounded-lg hover:bg-opacity-30 transition duration-200 text-sm"
                   >
                     Edit
                   </button>
@@ -251,7 +251,7 @@ const ManageTasks = () => {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white bg-opacity-10 backdrop-blur-md rounded-2xl p-6 border border-white border-opacity-20 max-w-md w-full mx-4">
             <h3 className="text-xl font-bold text-white mb-4">Delete Task</h3>
-            <p className="text-white text-opacity-80 mb-6">
+            <p className="text-black text-opacity-80 mb-6">
               Are you sure you want to delete "{selectedTask?.title}"? This action cannot be undone.
             </p>
             <div className="flex space-x-4">
@@ -266,7 +266,7 @@ const ManageTasks = () => {
                   setShowDeleteModal(false);
                   setSelectedTask(null);
                 }}
-                className="flex-1 py-2 bg-white bg-opacity-20 text-white rounded-lg hover:bg-opacity-30 transition duration-200"
+                className="flex-1 py-2 bg-orange-300 bg-opacity-20 text-white rounded-lg hover:bg-opacity-30 transition duration-200"
               >
                 Cancel
               </button>
@@ -281,18 +281,18 @@ const ManageTasks = () => {
           <div className="flex justify-around items-center">
             <button 
               onClick={() => navigate('/admin/dashboard')}
-              className="flex flex-col items-center text-white"
+              className="flex flex-col items-center text-purple-600"
             >
               <span className="text-2xl mb-1">🏠</span>
               <span className="text-xs">Dashboard</span>
             </button>
-            <button className="flex flex-col items-center text-white">
+            <button className="flex flex-col items-center text-purple-600">
               <span className="text-2xl mb-1">📋</span>
               <span className="text-xs">Tasks</span>
             </button>
             <button 
               onClick={() => navigate('/admin/users')}
-              className="flex flex-col items-center text-white"
+              className="flex flex-col items-center text-purple-600"
             >
               <span className="text-2xl mb-1">👥</span>
               <span className="text-xs">Users</span>

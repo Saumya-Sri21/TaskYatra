@@ -122,11 +122,11 @@ const CreateTask = () => {
             <div className="flex items-center space-x-4">
               <button
                 onClick={() => navigate('/admin/dashboard')}
-                className="text-white hover:text-opacity-80"
+                className="text-purple-600 hover:text-opacity-80"
               >
                 ← Back
               </button>
-              <h1 className="text-2xl font-bold text-white">Create New Task</h1>
+              <h1 className="text-2xl font-bold text-purple-600">Create New Task</h1>
             </div>
           </div>
         </div>
@@ -146,52 +146,52 @@ const CreateTask = () => {
               {/* Basic Information */}
               <div className="space-y-4">
                 <div>
-                  <label className="block text-white text-sm font-medium mb-2">Task Title *</label>
+                  <label className="block text-purple-800 text-sm font-medium mb-2">Task Title *</label>
                   <input
                     type="text"
                     name="title"
                     required
                     value={formData.title}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 focus:outline-none focus:ring-2 focus:ring-violet-400 text-white placeholder-white placeholder-opacity-70"
+                    className="w-full px-4 py-2 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 focus:outline-none focus:ring-2 focus:ring-violet-400 text-black placeholder-gray-500 placeholder-opacity-70"
                     placeholder="Enter task title"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-white text-sm font-medium mb-2">Description</label>
+                  <label className="block text-purple-800 text-sm font-medium mb-2">Description</label>
                   <textarea
                     name="description"
                     value={formData.description}
                     onChange={handleChange}
                     rows="4"
-                    className="w-full px-4 py-2 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 focus:outline-none focus:ring-2 focus:ring-violet-400 text-white placeholder-white placeholder-opacity-70"
+                    className="w-full px-4 py-2 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 focus:outline-none focus:ring-2 focus:ring-violet-400 text-black placeholder-gray-500 placeholder-opacity-70"
                     placeholder="Enter task description"
                   />
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div>
-                    <label className="block text-white text-sm font-medium mb-2">Priority</label>
+                    <label className="block text-purple-800 text-sm font-medium mb-2">Priority</label>
                     <select
                       name="priority"
                       value={formData.priority}
                       onChange={handleChange}
-                      className="w-full px-4 py-2 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 focus:outline-none focus:ring-2 focus:ring-violet-400 text-white"
+                      className="w-full px-4 py-2 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 focus:outline-none focus:ring-2 focus:ring-violet-400 text-purple-600"
                     >
-                      <option value="Low">Low</option>
-                      <option value="Middle">Middle</option>
-                      <option value="High">High</option>
+                      <option value="Low" className='text-green-500'>Low</option>
+                      <option value="Middle" className='text-blue-600'>Middle</option>
+                      <option value="High" className='text-red-500'>High</option>
                     </select>
                   </div>
 
                   <div>
-                    <label className="block text-white text-sm font-medium mb-2">Status</label>
+                    <label className="block text-purple-800 text-sm font-medium mb-2">Status</label>
                     <select
                       name="status"
                       value={formData.status}
                       onChange={handleChange}
-                      className="w-full px-4 py-2 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 focus:outline-none focus:ring-2 focus:ring-violet-400 text-white"
+                      className="w-full px-4 py-2 rounded-lg bg-white bg-opacity-20 border border-purple-300 border-opacity-30 focus:outline-none focus:ring-2 focus:ring-violet-400 text-purple-600"
                     >
                       <option value="Pending">Pending</option>
                       <option value="In Progress">In Progress</option>
@@ -200,14 +200,14 @@ const CreateTask = () => {
                   </div>
 
                   <div>
-                    <label className="block text-white text-sm font-medium mb-2">Due Date *</label>
+                    <label className="block text-purple-800 text-sm font-medium mb-2">Due Date *</label>
                     <input
                       type="date"
                       name="dueDate"
                       required
                       value={formData.dueDate}
                       onChange={handleChange}
-                      className="w-full px-4 py-2 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 focus:outline-none focus:ring-2 focus:ring-violet-400 text-white"
+                      className="w-full px-4 py-2 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 focus:outline-none focus:ring-2 focus:ring-violet-400 text-purple"
                     />
                   </div>
                 </div>
@@ -225,22 +225,22 @@ const CreateTask = () => {
                         onChange={() => handleUserSelection(user._id)}
                         className="w-4 h-4 text-purple-600 bg-white bg-opacity-20 border-white border-opacity-30 rounded focus:ring-purple-500 focus:ring-2"
                       />
-                      <span className="text-white">{user.name}</span>
+                      <span className="text-purple-700">{user.name}</span>
                     </label>
                   ))}
                 </div>
                 {users.length === 0 && (
-                  <p className="text-white text-opacity-60 text-sm">No users available</p>
+                  <p className="text-purple-800 text-opacity-60 text-sm">No users available</p>
                 )}
               </div>
 
               {/* Todo List */}
               <div>
-                <label className="block text-white text-sm font-medium mb-2">Checklist Items</label>
+                <label className="block text-purple-800 text-sm font-medium mb-2">Checklist Items</label>
                 <div className="space-y-2 mb-4">
                   {formData.todoList.map((todo, index) => (
                     <div key={index} className="flex items-center space-x-2">
-                      <span className="text-white">• {todo.text}</span>
+                      <span className="text-purple-800">• {todo.text}</span>
                       <button
                         type="button"
                         onClick={() => removeTodo(index)}
@@ -258,7 +258,7 @@ const CreateTask = () => {
                     onChange={(e) => setNewTodo(e.target.value)}
                     onKeyPress={(e) => e.key === 'Enter' && addTodo()}
                     placeholder="Add checklist item..."
-                    className="flex-1 px-4 py-2 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 focus:outline-none focus:ring-2 focus:ring-violet-400 text-white placeholder-white placeholder-opacity-70"
+                    className="flex-1 px-4 py-2 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 focus:outline-none focus:ring-2 focus:ring-violet-400 text-black placeholder-gray-500 placeholder-opacity-70"
                   />
                   <button
                     type="button"
@@ -273,13 +273,13 @@ const CreateTask = () => {
 
               {/* Attachments */}
               <div>
-                <label className="block text-white text-sm font-medium mb-2">Attachments</label>
+                <label className="block text-blue-500 text-sm font-medium mb-2">Attachments</label>
                 <input
                   type="text"
                   name="attachments"
                   value={formData.attachments}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 focus:outline-none focus:ring-2 focus:ring-violet-400 text-white placeholder-white placeholder-opacity-70"
+                  className="w-full px-4 py-2 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 focus:outline-none focus:ring-2 focus:ring-violet-400 text-white placeholder-gray-500 placeholder-opacity-70"
                   placeholder="Enter attachment links or notes"
                 />
               </div>
@@ -307,7 +307,7 @@ const CreateTask = () => {
       </div>
 
       {/* Bottom Navigation */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white bg-opacity-10 backdrop-blur-md border-t border-white border-opacity-20">
+      <div className="bottom-0 left-0 right-0 bg-white bg-opacity-10 backdrop-blur-md border-t border-white border-opacity-20">
         <div className="container mx-auto px-4 py-4">
           <div className="flex justify-around items-center">
             <button 

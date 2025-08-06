@@ -83,7 +83,7 @@ const Dashboard = () => {
             </div>
             <div className="flex items-center space-x-4">
               <div className="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
-                <span className="text-purple-500 font-semibold">
+                <span className="w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-br from-purple-500 to-pink-400 text-white font-semibold text-lg">
                   {user?.name?.charAt(0).toUpperCase()}
                 </span>
               </div>
