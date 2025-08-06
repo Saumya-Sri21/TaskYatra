@@ -5,7 +5,7 @@ import bcrypt from "bcryptjs";
 // GET: /api/users/
 const getUsers = async (req, res) => {
     try {
-        const users = await User.find({ role: 'user' }).select("-password");
+        const users = await User.find().select("-password");
 
         const UsersWithTaskCounts = await Promise.all(users.map(async (user) => {
             const pendingTasks = await Task.countDocuments({ assignedTo: user._id, status: "Pending" });
@@ -20,10 +20,10 @@ const getUsers = async (req, res) => {
             };
         }));
 
-        res.json(UsersWithTaskCounts);
+        res.json({ success: true, users: UsersWithTaskCounts });
     } catch (error) {
-        console.log(`Unable to get user: ${error}`);
-        return res.status(401).json({ success: false, message: "Unable to get user", error: error.message });
+        console.log(`Unable to get users: ${error}`);
+        return res.status(401).json({ success: false, message: "Unable to get users", error: error.message });
     }
 };
 
@@ -32,7 +32,7 @@ const getUserById = async (req, res) => {
     try {
         const user = await User.findById(req.params.id).select("-password");
         if (!user) return res.status(404).json({ message: "User not found" });
-        res.json(user);
+        res.json({ success: true, user });
     } catch (error) {
         console.log(`Unable to get user by id: ${error}`);
         return res.status(401).json({ success: false, message: "Unable to get user by id", error: error.message });

@@ -12,7 +12,7 @@ const taskSchema=new mongoose.Schema({
     priority:{type:String,enum:["Low", "Middle", "High"], default:"Low"},
     status:{type:String, enum:["Pending", "Completed", "In Progress"], default:"Pending"},
     dueDate:{type:Date,required:true},
-    assginedTo:[{type:mongoose.Schema.Types.ObjectId, ref:"User"}],
+    assignedTo:[{type:mongoose.Schema.Types.ObjectId, ref:"User"}],
     createdBy:{type:mongoose.Schema.Types.ObjectId, ref:"User"},
     attachments:{type:String},
     todoList:[todoSchema],

@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
 import Login from './pages/Auth/Login'
 import SignUp from './pages/Auth/SignUp'
 import Dashboard from './pages/Admin/Dashboard'
@@ -16,10 +16,14 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
+          {/* Default route */}
+          <Route path='/' element={<Navigate to="/login" replace />} />
+          
+          {/* Auth Routes */}
           <Route path='/login' element={<Login/>}/>
           <Route path='/signup' element={<SignUp/>}/>
 
-            {/* Admin Routes */}
+          {/* Admin Routes */}
           <Route element={<PrivateRoute allowedRoles={["admin"]}/>}>
             <Route path='/admin/dashboard' element={<Dashboard/>}/>
             <Route path='/admin/tasks' element={<ManageTasks/>}/>
@@ -27,12 +31,15 @@ function App() {
             <Route path='/admin/users' element={<ManageUsers/>}/>
           </Route>
           
-            {/* User Routes */}
+          {/* User Routes */}
           <Route element={<PrivateRoute allowedRoles={["user"]}/>}>
             <Route path='/user/dashboard' element={<UserDashboard/>}/>
             <Route path='/user/my-tasks' element={<MyTask/>}/>
             <Route path='/user/task-details/:id' element={<ViewTaskDetails/>}/>
           </Route>
+
+          {/* Catch all route */}
+          <Route path='*' element={<Navigate to="/login" replace />} />
 
         </Routes>
 
