@@ -25,5 +25,10 @@ A full-stack web application built for efficient task management using **React (
 - 📥 File uploads stored locally
 - 🧪 Postman-tested endpoints (automated tests in progress)
 
+## ⚙️ Setup Instructions
+🖥 Backend
+
+
+
 ---
 
