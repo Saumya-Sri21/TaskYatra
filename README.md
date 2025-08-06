@@ -6,7 +6,7 @@ A full-stack web application built for efficient task management using **React (
 
 ## 🔗 Live URL
 
-👉 [Live Link]()
+👉 [Live Link](https://taskyatraa.onrender.com)
 ---
 
 ## 📬 Postman Collection
