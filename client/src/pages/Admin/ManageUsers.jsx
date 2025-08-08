@@ -217,7 +217,7 @@ const ManageUsers = () => {
       )}
 
       {/* Bottom Navigation */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white bg-opacity-10 backdrop-blur-md border-t border-white border-opacity-20">
+      <div className="bottom-0 left-0 right-0 bg-white bg-opacity-10 backdrop-blur-md border-t border-white border-opacity-20">
         <div className="container mx-auto px-4 py-4">
           <div className="flex justify-around items-center">
             <button

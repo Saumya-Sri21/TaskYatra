@@ -72,7 +72,7 @@ const Login = () => {
 
             <button
               type="submit"
-              className="w-full py-2 rounded-lg bg-gradient-to-r from-purple-500 to-violet-600 hover:opacity-90 transition duration-200 font-semibold"
+              className="w-full py-2 rounded-lg bg-gradient-to-r from-purple-500 to-violet-600 hover:opacity-90 transition duration-200 font-semibold text-white"
             >
               Login
             </button>

@@ -135,11 +135,11 @@ const ViewTaskDetails = () => {
             <div className="flex items-center space-x-4">
               <button
                 onClick={() => navigate('/user/my-tasks')}
-                className="text-white hover:text-opacity-80"
+                className="text-purple-500 hover:text-opacity-80"
               >
                 ← Back
               </button>
-              <h1 className="text-2xl font-bold text-white">Task Details</h1>
+              <h1 className="text-2xl font-bold text-purple-600">Task Details</h1>
             </div>
             <span className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusColor(task.status)} text-white`}>
               {task.status}
@@ -152,33 +152,33 @@ const ViewTaskDetails = () => {
       <div className="container mx-auto px-4 py-6">
         {/* Task Header */}
         <div className="bg-white bg-opacity-10 backdrop-blur-md rounded-2xl p-6 border border-white border-opacity-20 mb-6">
-          <h2 className="text-2xl font-bold text-white mb-4">{task.title}</h2>
+          <h2 className="text-2xl font-bold text-purple-700 mb-4">{task.title}</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
             <div>
-              <span className="text-white text-opacity-60 text-sm">Priority</span>
+              <span className="text-purple-600 text-opacity-60 text-sm">Priority</span>
               <p className={`font-medium ${getPriorityColor(task.priority)}`}>{task.priority}</p>
             </div>
             <div>
-              <span className="text-white text-opacity-60 text-sm">Due Date</span>
-              <p className="text-white">{new Date(task.dueDate).toLocaleDateString()}</p>
+              <span className="text-purple-600 text-opacity-60 text-sm">Due Date</span>
+              <p className="text-purple-600">{new Date(task.dueDate).toLocaleDateString()}</p>
             </div>
             <div>
-              <span className="text-white text-opacity-60 text-sm">Created</span>
-              <p className="text-white">{new Date(task.createdAt).toLocaleDateString()}</p>
+              <span className="text-purple-600 text-opacity-60 text-sm">Created</span>
+              <p className="text-purple-600">{new Date(task.createdAt).toLocaleDateString()}</p>
             </div>
           </div>
 
           {task.description && (
             <div className="mb-4">
-              <span className="text-white text-opacity-60 text-sm">Description</span>
-              <p className="text-white mt-1">{task.description}</p>
+              <span className="text-purple-600 text-opacity-60 text-sm">Description</span>
+              <p className="text-purple-600 mt-1">{task.description}</p>
             </div>
           )}
 
           {/* Status Update */}
           <div className="flex items-center space-x-4">
-            <span className="text-white text-opacity-60 text-sm">Update Status:</span>
+            <span className="text-purple-600 text-opacity-60 text-sm">Update Status:</span>
             <div className="flex space-x-2">
               {['Pending', 'In Progress', 'Completed'].map((status) => (
                 <button
@@ -188,7 +188,7 @@ const ViewTaskDetails = () => {
                   className={`px-3 py-1 rounded-full text-sm font-medium transition duration-200 ${
                     task.status === status
                       ? `${getStatusColor(status)} text-white`
-                      : 'bg-white bg-opacity-20 text-white hover:bg-opacity-30'
+                      : 'bg-white bg-opacity-20 text-purple-600 hover:bg-opacity-30'
                   } disabled:opacity-50`}
                 >
                   {status}
@@ -200,7 +200,7 @@ const ViewTaskDetails = () => {
 
         {/* Todo List */}
         <div className="bg-white bg-opacity-10 backdrop-blur-md rounded-2xl p-6 border border-white border-opacity-20 mb-6">
-          <h3 className="text-xl font-bold text-white mb-4">Checklist</h3>
+          <h3 className="text-xl font-bold text-purple-500 mb-4">Checklist</h3>
           
           <div className="space-y-3 mb-4">
             {task.todoList && task.todoList.length > 0 ? (
@@ -212,7 +212,7 @@ const ViewTaskDetails = () => {
                     onChange={() => toggleTodo(index)}
                     className="w-5 h-5 text-purple-600 bg-white bg-opacity-20 border-white border-opacity-30 rounded focus:ring-purple-500 focus:ring-2"
                   />
-                  <span className={`text-white ${todo.completed ? 'line-through text-opacity-60' : ''}`}>
+                  <span className={`text-purple-500 ${todo.completed ? 'line-through text-opacity-60' : ''}`}>
                     {todo.text}
                   </span>
                 </div>
@@ -230,7 +230,7 @@ const ViewTaskDetails = () => {
               onChange={(e) => setNewTodo(e.target.value)}
               onKeyPress={(e) => e.key === 'Enter' && addTodo()}
               placeholder="Add a new checklist item..."
-              className="flex-1 px-4 py-2 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30 focus:outline-none focus:ring-2 focus:ring-violet-400 text-white placeholder-white placeholder-opacity-70"
+              className="flex-1 px-4 py-2 rounded-lg bg-white bg-opacity-20 border border-purple-300 border-opacity-30 focus:outline-none focus:ring-2 focus:ring-violet-400 text-purple-500 placeholder-gray-500 placeholder-opacity-70"
             />
             <button
               onClick={addTodo}
@@ -245,9 +245,9 @@ const ViewTaskDetails = () => {
         {/* Progress */}
         {task.todoList && task.todoList.length > 0 && (
           <div className="bg-white bg-opacity-10 backdrop-blur-md rounded-2xl p-6 border border-white border-opacity-20 mb-6">
-            <h3 className="text-xl font-bold text-white mb-4">Progress</h3>
+            <h3 className="text-xl font-bold text-purple-500 mb-4">Progress</h3>
             <div className="space-y-2">
-              <div className="flex justify-between text-white">
+              <div className="flex justify-between text-purple-500">
                 <span>Completed Items</span>
                 <span>{task.todoList.filter(item => item.completed).length}/{task.todoList.length}</span>
               </div>
@@ -266,8 +266,8 @@ const ViewTaskDetails = () => {
         {/* Attachments */}
         {task.attachments && (
           <div className="bg-white bg-opacity-10 backdrop-blur-md rounded-2xl p-6 border border-white border-opacity-20">
-            <h3 className="text-xl font-bold text-white mb-4">Attachments</h3>
-            <div className="text-white text-opacity-70">
+            <h3 className="text-xl font-bold text-blue-600 mb-4">Attachments</h3>
+            <div className="text-blue-600 text-opacity-70">
               {task.attachments}
             </div>
           </div>
@@ -275,27 +275,24 @@ const ViewTaskDetails = () => {
       </div>
 
       {/* Bottom Navigation */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white bg-opacity-10 backdrop-blur-md border-t border-white border-opacity-20">
+      <div className="bottom-0 left-0 right-0 bg-white bg-opacity-10 backdrop-blur-md border-t border-white border-opacity-20">
         <div className="container mx-auto px-4 py-4">
           <div className="flex justify-around items-center">
             <button 
               onClick={() => navigate('/user/dashboard')}
-              className="flex flex-col items-center text-white"
+              className="flex flex-col items-center text-purple-500"
             >
               <span className="text-2xl mb-1">🏠</span>
               <span className="text-xs">Home</span>
             </button>
             <button 
               onClick={() => navigate('/user/my-tasks')}
-              className="flex flex-col items-center text-white"
+              className="flex flex-col items-center text-purple-500"
             >
               <span className="text-2xl mb-1">📋</span>
               <span className="text-xs">Tasks</span>
             </button>
-            <button className="flex flex-col items-center text-white">
-              <span className="text-2xl mb-1">⚙️</span>
-              <span className="text-xs">Settings</span>
-            </button>
+            
           </div>
         </div>
       </div>
