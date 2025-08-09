@@ -10,10 +10,12 @@ import reportRouter from './routes/report.routes.js';
 dotenv.config();
 const app=express();
 
-app.use(cors({
+const corsOptions = {
   origin: process.env.CLIENT_URL,
   credentials: true,
-}));
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+};
 app.use(express.json());
 
 //routes
