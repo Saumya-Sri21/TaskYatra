@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import axiosInstance from '../../utils/axiosInstance';
 
 const ManageTasks = () => {
   const [tasks, setTasks] = useState([]);
@@ -20,7 +20,7 @@ const ManageTasks = () => {
 
     const fetchTasks = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/api/tasks', {
+        const response = await axiosInstance.get('/tasks', {
           headers: { Authorization: `Bearer ${token}` }
         });
         setTasks(response.data.tasks || []);
@@ -50,7 +50,7 @@ const ManageTasks = () => {
     
     const token = localStorage.getItem('token');
     try {
-      await axios.delete(`http://localhost:8000/api/tasks/${selectedTask._id}`, {
+      await axiosInstance.delete(`/tasks/${selectedTask._id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setTasks(tasks.filter(task => task._id !== selectedTask._id));

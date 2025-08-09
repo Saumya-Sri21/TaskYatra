@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
+import axiosInstance from '../../utils/axiosInstance';
 
 const ViewTaskDetails = () => {
   const [task, setTask] = useState(null);
@@ -19,7 +20,7 @@ const ViewTaskDetails = () => {
 
     const fetchTask = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/tasks/${id}`, {
+        const response = await axiosInstance.get(`/tasks/${id}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setTask(response.data.task);
@@ -41,7 +42,7 @@ const ViewTaskDetails = () => {
     const token = localStorage.getItem('token');
     try {
       setUpdating(true);
-      await axios.put(`http://localhost:8000/api/tasks/${id}/status`, 
+      await axiosInstance.put(`/tasks/${id}/status`, 
         { status: newStatus },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -60,7 +61,7 @@ const ViewTaskDetails = () => {
         index === todoIndex ? { ...todo, completed: !todo.completed } : todo
       );
       
-      await axios.put(`http://localhost:8000/api/tasks/${id}/todo`, 
+      await axiosInstance.put(`/tasks/${id}/todo`, 
         { todoList: updatedTodoList },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -77,7 +78,7 @@ const ViewTaskDetails = () => {
     try {
       const updatedTodoList = [...task.todoList, { text: newTodo.trim(), completed: false }];
       
-      await axios.put(`http://localhost:8000/api/tasks/${id}/todo`, 
+      await axiosInstance.put(`/tasks/${id}/todo`, 
         { todoList: updatedTodoList },
         { headers: { Authorization: `Bearer ${token}` } }
       );

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import axiosInstance from '../../utils/axiosInstance';
+
 
 const UserDashboard = () => {
   const [user, setUser] = useState(null);
@@ -19,13 +20,13 @@ const UserDashboard = () => {
     const fetchData = async () => {
       try {
         const [profileRes, dashboardRes, tasksRes] = await Promise.all([
-          axios.get('http://localhost:8000/api/auth/profile', {
+          axiosInstance.get('/auth/profile', {
             headers: { Authorization: `Bearer ${token}` }
           }),
-          axios.get('http://localhost:8000/api/tasks/user-dashboard-data', {
+          axiosInstance.get('/tasks/user-dashboard-data', {
             headers: { Authorization: `Bearer ${token}` }
           }),
-          axios.get('http://localhost:8000/api/tasks', {
+          axiosInstance.get('/tasks', {
             headers: { Authorization: `Bearer ${token}` }
           })
         ]);

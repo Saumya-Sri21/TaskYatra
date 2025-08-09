@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import axiosInstance from '../../utils/axiosInstance'
 
 const MyTask = () => {
   const [tasks, setTasks] = useState([]);
@@ -18,7 +19,7 @@ const MyTask = () => {
 
     const fetchTasks = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/api/tasks', {
+        const response = await axiosInstance.get('/tasks', {
           headers: { Authorization: `Bearer ${token}` }
         });
         setTasks(response.data.tasks || []);

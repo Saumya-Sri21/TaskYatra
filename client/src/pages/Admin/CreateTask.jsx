@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import axiosInstance from '../../utils/axiosInstance';
 
 const CreateTask = () => {
   const [formData, setFormData] = useState({
@@ -28,7 +29,7 @@ const CreateTask = () => {
 
     const fetchUsers = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/api/users', {
+        const response = await axiosInstance.get('/users', {
           headers: { Authorization: `Bearer ${token}` }
         });
         setUsers(response.data.users || []);

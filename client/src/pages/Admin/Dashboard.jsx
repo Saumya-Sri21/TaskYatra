@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-
+import axiosInstance from '../../utils/axiosInstance';
 const Dashboard = () => {
   const [user, setUser] = useState(null);
   const [dashboardData, setDashboardData] = useState(null);
@@ -19,13 +18,13 @@ const Dashboard = () => {
     const fetchData = async () => {
       try {
         const [profileRes, dashboardRes, tasksRes] = await Promise.all([
-          axios.get('http://localhost:8000/api/auth/profile', {
+          axiosInstance.get('/auth/profile', {
             headers: { Authorization: `Bearer ${token}` }
           }),
-          axios.get('http://localhost:8000/api/tasks/dashboard-data', {
+          axiosInstance.get('/tasks/dashboard-data', {
             headers: { Authorization: `Bearer ${token}` }
           }),
-          axios.get('http://localhost:8000/api/tasks', {
+          axiosInstance.get('/tasks', {
             headers: { Authorization: `Bearer ${token}` }
           })
         ]);
@@ -200,8 +199,8 @@ const Dashboard = () => {
               >
                 <div className="flex items-center justify-between">
                   <div className="flex-1">
-                    <h3 className="text-white font-semibold">{task.title}</h3>
-                    <p className="text-white text-opacity-70 text-sm mt-1">
+                    <h3 className="text-purple-500 font-semibold">{task.title}</h3>
+                    <p className="text-purple-500 text-opacity-70 text-sm mt-1">
                       {task.description?.substring(0, 50)}...
                     </p>
                     <div className="flex items-center space-x-2 mt-2">
