@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../../utils/axiosInstance';
 import { toast } from 'react-hot-toast';
 import { useAuth } from '../../context/AuthContext';
+import { APIPATH } from '../../utils/apiPath';
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -38,7 +39,7 @@ const SignUp = () => {
     }
 
     try {
-      const { data } = await axiosInstance.post('/auth/register', {
+      const { data } = await axiosInstance.post(APIPATH.AUTH.REGISTER, {
         name: formData.name,
         email: formData.email,
         password: formData.password,
