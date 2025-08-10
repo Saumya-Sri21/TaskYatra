@@ -11,7 +11,7 @@ To register as an **Admin**, you must enter a **secret token** during registrati
 ---
 
 ## 🔗 Live URL
-👉 [Live Link](https://taskyatraa.onrender.com)
+👉 [Live Link](https://taskyatra.onrender.com)
 
 ---
 
